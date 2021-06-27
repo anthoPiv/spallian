@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() ~ "Articles" }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="col-md-8">
+            <a href="{{ path('articles_new') }}"
+               type="button" class="btn btn-success m-3">
+                Create Article
+            </a>
+        </div>
+
+        {% for message in app.flashes('success') %}
+            <div class="col-md-6">
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="col-md-12" style="text-align: center">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">SubTitle</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Created at</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <th scope="row">{{ article.id }}</th>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.subtitle }}</td>
+                        <td>{{ article.content }}</td>
+                        <td>{{ article.author.name }}</td>
+                        <td>{{ article.createdAt|date('d-m-Y') }}</td>
+                        <td>
+                            <a href="{{ path('articles_edit', {'id': article.id}) }}"
+                               type="button" class="btn btn-primary">
+                                Edit
+                            </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('articles_delete', {'id': article.id}) }}"
+                                   type="button" class="btn btn-danger">
+                                    remove
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(articles) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
