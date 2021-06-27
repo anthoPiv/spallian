@@ -20,11 +20,11 @@ In this project, the environment, the database and the authentication are alread
 
 1. Clone the repository:
 
-`git clone https://github.com/devSpallian/spallian_blog.git --config core.autocrlf=input`
+`git clone https://github.com/anthoPiv/spallian.git --config core.autocrlf=input`
 
 2. Switch to the repository folder:
 
-`cd spallian_blog`
+`cd spallian`
 
 3. Build and start the containers:
 
