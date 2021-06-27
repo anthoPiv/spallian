@@ -8,6 +8,10 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * Class UserFixtures
+ * @package App\DataFixtures
+ */
 class UserFixtures extends Fixture
 {
     /**

@@ -3,13 +3,24 @@
 
 namespace App\Model;
 
+use App\Entity\Author;
+use DateTime;
+use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class ArticleModel
+ * @package App\Model
+ */
 class ArticleModel
 {
+    /**
+     * @var Uuid
+     */
     private $id;
 
     /**
+     * @var string
      * @Assert\Type("string")
      * @Assert\Length(
      *     min = "3",
@@ -19,6 +30,7 @@ class ArticleModel
     private $title;
 
     /**
+     * @var string
      * @Assert\Type("string")
      * @Assert\Length(
      *     min = "3",
@@ -28,6 +40,7 @@ class ArticleModel
     private $subtitle;
 
     /**
+     * @var string
      * @Assert\Type("string")
      * @Assert\Length(
      *     min = "3",
@@ -36,113 +49,119 @@ class ArticleModel
      */
     private $content;
 
+    /**
+     * @var DateTime
+     */
     private $createdAt;
 
+    /**
+     * @var Author
+     */
     private $author;
 
     /**
-     * @return mixed
+     * @return Uuid
      */
-    public function getId()
+    public function getId(): Uuid
     {
         return $this->id;
     }
 
     /**
-     * @param mixed $id
-     * @return ArticleModel
+     * @param Uuid $id
+     * @return $this
      */
-    public function setId($id)
+    public function setId(Uuid $id): ArticleModel
     {
         $this->id = $id;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
     /**
-     * @param mixed $title
-     * @return ArticleModel
+     * @param string $title
+     * @return $this
      */
-    public function setTitle($title)
+    public function setTitle(string $title): ArticleModel
     {
         $this->title = $title;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getSubtitle()
+    public function getSubtitle(): ?string
     {
         return $this->subtitle;
     }
 
     /**
-     * @param mixed $subtitle
-     * @return ArticleModel
+     * @param string|null $subtitle
+     * @return $this
      */
-    public function setSubtitle($subtitle)
+    public function setSubtitle(?string $subtitle): ArticleModel
     {
         $this->subtitle = $subtitle;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
 
     /**
-     * @param mixed $content
-     * @return ArticleModel
+     * @param string $content
+     * @return $this
      */
-    public function setContent($content)
+    public function setContent(string $content): ArticleModel
     {
         $this->content = $content;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
     /**
-     * @param mixed $createdAt
-     * @return ArticleModel
+     * @param DateTime $createdAt
+     * @return $this
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(DateTime $createdAt): ArticleModel
     {
         $this->createdAt = $createdAt;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return Author|null
      */
-    public function getAuthor()
+    public function getAuthor(): ?Author
     {
         return $this->author;
     }
 
     /**
-     * @param mixed $author
-     * @return ArticleModel
+     * @param Author $author
+     * @return $this
      */
-    public function setAuthor($author)
+    public function setAuthor(Author $author): ArticleModel
     {
         $this->author = $author;
         return $this;

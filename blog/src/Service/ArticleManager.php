@@ -7,10 +7,15 @@ use App\Entity\Article;
 use App\Factory\ArticleFactory;
 use App\Model\ArticleModel;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class ArticleManager
+ * @package App\Service
+ */
 class ArticleManager
 {
     /**
@@ -61,12 +66,16 @@ class ArticleManager
     /**
      * @param ArticleModel $articleModel
      */
-    public function new(ArticleModel $articleModel): void
+    public function new(ArticleModel $articleModel)
     {
         $article = $this->articleFactory->create($articleModel);
 
-        $this->entityManager->persist($article);
-        $this->entityManager->flush();
+        try {
+            $this->entityManager->persist($article);
+            $this->entityManager->flush();
+        } catch (ORMException $exception) {
+            return $exception->getMessage();
+        }
     }
 
     /**
@@ -91,18 +100,27 @@ class ArticleManager
     /**
      * @param Article $article
      */
-    public function update(Article $article): void
+    public function update(Article $article)
     {
-        $this->entityManager->persist($article);
-        $this->entityManager->flush();
+        try {
+            $this->entityManager->persist($article);
+            $this->entityManager->flush();
+        } catch (ORMException $exception) {
+            return $exception->getMessage();
+        }
     }
 
     /**
      * @param Article $article
+     *
      */
-    public function remove(Article $article): void
+    public function remove(Article $article)
     {
-        $this->entityManager->remove($article);
-        $this->entityManager->flush();
+        try {
+            $this->entityManager->remove($article);
+            $this->entityManager->flush();
+        } catch (ORMException $exception) {
+            return $exception->getMessage();
+        }
     }
 }

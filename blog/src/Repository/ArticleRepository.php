@@ -21,9 +21,9 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return mixed
+     * @return array|null
      */
-    public function getArticles()
+    public function getArticles(): ?array
     {
         return $this->createQueryBuilder('a')
             ->orderBy('a.createdAt', 'DESC')

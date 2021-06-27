@@ -9,6 +9,10 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
+/**
+ * Class AuthorFixtures
+ * @package App\DataFixtures
+ */
 class AuthorFixtures extends Fixture
 {
     public const AUTHOR = 'author';

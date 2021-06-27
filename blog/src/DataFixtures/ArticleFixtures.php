@@ -10,6 +10,10 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
+/**
+ * Class ArticleFixtures
+ * @package App\DataFixtures
+ */
 class ArticleFixtures extends Fixture implements DependentFixtureInterface
 {
     /**

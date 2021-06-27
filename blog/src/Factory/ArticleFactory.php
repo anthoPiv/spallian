@@ -8,6 +8,10 @@ use App\Entity\Article;
 use App\Model\ArticleModel;
 use DateTime;
 
+/**
+ * Class ArticleFactory
+ * @package App\Factory
+ */
 class ArticleFactory
 {
     /**
